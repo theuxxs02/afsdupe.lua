@@ -21,7 +21,7 @@ local A = Y.Button({
         if Type == "Start Dataloss" then
                     local args = {
                         [1] = {
-                            ["1\0" .. string.rep("B", 4200000)] = require(game.ReplicatedStorage.ModuleScripts.LocalDairebStore).GetStoreProxy("GameData"):GetData("Pets")[1].UID
+                            ["1\0" .. game.ReplicatedStorage.Remote.SetTutorialDone:FireServer("\0" .. string.rep("B", 4200000))
                         },
                         [2] = "AFS_Is_Dogshit",
                         [3] = 3
@@ -33,9 +33,10 @@ local A = Y.Button({
             for i,v in pairs(game.Players.LocalPlayer.PlayerGui.MainGui.Pets.TeamsList.Main.Scroll:GetDescendants()) do
                 if v.Name == "TeamName" and v.Text == "AFS_Is_Dogshit" then
                     local args = {
-                        [1] = "\0" .. string.rep("B", 4200000)
+                        [1] = v.Parent.LayoutOrder
                     }
-                    game.ReplicatedStorage.Remote.SetTutorialDone:FireServer(unpack(args))
+
+                    game:GetService("ReplicatedStorage").Remote.DeleteTeam:FireServer(unpack(args))
                     TextField:SetText("Undone")
                     break
                 end
@@ -56,9 +57,9 @@ local D = Y.Dropdown({
 })
 
 local AE = Y.Button({
-    Text = "[https://discord.gg/VzfJJw2VSw])",
+    Text = "https://discord.gg/VzfJJw2VSw)",
     Callback = function()
-        print("[https://discord.gg/VzfJJw2VSw]")
+        print("https://discord.gg/VzfJJw2VSw")
     end
 })
 
